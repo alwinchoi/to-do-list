@@ -1,10 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import ToDoList from './Component/ToDoList';
+import Modal from './Component/modal';
+
+import { useState } from "react";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  console.log(isOpen)
+
   return (
-    <div className="App">
+    <div className="App App-header">
       {/* <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> 
         <p>
@@ -19,7 +26,13 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <ToDoList />
+      <ToDoList onSelect={setIsOpen}>
+        sth
+        {/* add table here and pass data */}
+      </ToDoList>
+      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+        Patrick is gae
+      </Modal>
     </div>
   );
 }
