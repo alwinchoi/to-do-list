@@ -17,10 +17,12 @@ const Modal = props => {
 
     return (
         <div className="modal">
-            <button onClick={props.handleClose} className="close-btn">
-                Close
-            </button>
-            <div className="modal-content">{props.children}</div>
+            <div className="modal-content">
+                <button onClick={props.handleClose} className="close-btn">
+                    X
+                </button>
+                {props.children}
+            </div>
         </div>
     )
 }

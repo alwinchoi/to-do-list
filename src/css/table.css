@@ -1,0 +1,16 @@
+.table .table-dark {
+    background-color: #282c34;
+}
+
+.table-button {
+    width: 54px;
+    height: 54px;
+    margin: auto;
+    border: 2px solid white;
+}
+
+.button-list {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}

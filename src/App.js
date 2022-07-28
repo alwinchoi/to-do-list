@@ -2,13 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import ToDoList from './Component/ToDoList';
 import Modal from './Component/modal';
+import Table from './Component/table';
 
 import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-
-  console.log(isOpen)
 
   return (
     <div className="App App-header">
@@ -31,7 +30,7 @@ function App() {
         {/* add table here and pass data */}
       </ToDoList>
       <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-        Patrick is gae
+        <Table />
       </Modal>
     </div>
   );
