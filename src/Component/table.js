@@ -10,19 +10,31 @@ const Table = props => {
 
     const getTask = () => {
         let information = document.querySelectorAll('input')
+        let startDate, endDate = 0
         let test = []
         information.forEach((entry, i) => {
-            console.log(entry.id)
             if (!entry.value) {
                 console.log(entry.id)
                 test.push(entry.id)
+            }
+            if (entry.id === 'Start Date') {
+                startDate = Date.parse(entry.value)
+            }
+            if (entry.id === 'End Date') {
+                endDate = Date.parse(entry.value)
             }
         })
         if (textColor === '') {
             test.push('Color')
         }
         if (test.length) {
-            alert(test + " are empty")
+            if (test.length > 1) {
+                alert(test + " are empty")
+            }
+            alert(test + " is empty")
+        }
+        else if (endDate - startDate < 0) {
+            alert('End Date is ealier than Start Date!')
         }
         else {
             let newTask = {}
@@ -32,13 +44,12 @@ const Table = props => {
                 }
             })
             newTask['Color'] = textColor
-            console.log(newTask)
             setNewTask(newTask)
         }
+        // console.log(JSON.stringify(newTask))
     }
 
     const changeTextColor = color => {
-        // console.log(color)
         setTextColor(color)
     }
 
@@ -60,6 +71,18 @@ const Table = props => {
         }
         else if (rowName.includes('Task')) {
             return <input id={rowName} type="text" style={{ color: `${textColor}` }} />
+        }
+        else if (rowName.includes('Frequency')) {
+            return (
+                <div>
+                    <input id={rowName} type="text" list="cars" />
+                    <datalist id="cars">
+                        <option>1 day</option>
+                        <option>7 days</option>
+                        <option>30 days</option>
+                    </datalist>
+                </div>
+            )
         }
         return <input id={rowName} type="text" />
     }
